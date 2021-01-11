@@ -1,2 +1,2 @@
 # Python-learning
-Python coding for the begineers to experts.
+Python coding for the Beginers to Advanced.
