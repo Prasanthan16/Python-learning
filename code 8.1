@@ -1,0 +1,10 @@
+import math
+def paint_calc(height, width, cover):
+    wall_area = (height * width) / cover
+    cans = math.ceil(wall_area)
+    print(f"total cans needed {cans}")
+
+h = int(input("height of the wall: "))
+w = int(input("width of the wall: "))
+coverage = 5
+paint_calc(height=h, width=w, cover=coverage)
