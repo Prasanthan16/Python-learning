@@ -8,7 +8,7 @@ def deal_card():
 
 
 def calculate_score(cards):
-    if 11 in cards and 10 in cards and len(cards) == 2:
+    if sum(cards) == 21 and len(cards) == 2:
         return 0
     if 11 in cards and sum(cards) > 21:
         cards.remove(11)
@@ -18,6 +18,9 @@ def calculate_score(cards):
 
 def compare(person_score, comp_score):
     """to compare the computer score and person score"""
+    if person_score > 21 and comp_score > 21:
+        return "You went over. You lose"
+
     if person_score == comp_score:
         return "EQUAL"
     elif comp_score == 0:
@@ -35,7 +38,8 @@ def compare(person_score, comp_score):
 
 
 def play_again():
-    global comp_score, person_score
+    comp_score = 0
+    person_score = 0
     person_cards = []
     computer_cards = []
     game_ends = False
@@ -55,7 +59,7 @@ def play_again():
         if person_score == 0 or comp_score == 0 or person_score > 21:
             game_ends = True
         else:
-            person_draw_card = input("do you want another card y or no?").lower()
+            person_draw_card = input("do you want another card 'y' or 'no'?")
             if person_draw_card == "y":
                 person_cards.append(deal_card())
             else:
@@ -68,3 +72,7 @@ def play_again():
     print(f" person final card{person_cards}, final score{person_score}")
     print(f" computer final card{computer_cards}, final score{comp_score}")
     print(compare(person_score, comp_score))
+
+
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
+    play_again()
